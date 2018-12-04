@@ -59,16 +59,25 @@ Cells(summary_row, 20).Value = Cells(2, 3).Value
 
     For Row = 2 To 2836
 
-          openprice = Cells(Row, 20).Value
+        openprice = Cells(Row, 20).Value
         closeprice = Cells(Row, 21).Value
         yearlychange = closeprice - openprice
         Cells(Row, 11).Value = yearlychange
 
-        if yearlychange <> 0 and openprice <> 0 Then
-        percentchange = yearlychange / openprice
-        Cells(Row, 12).Value = percentchange
+        if yearlychange > 0 Then
+        cells(Row,11).Interior.ColorIndex = 4
 
-        end If
+        Else
+        Cells(Row,11).Interior.ColorIndex = 3
+
+        end if
+
+            if yearlychange <> 0 and openprice <> 0 Then
+            percentchange = yearlychange / openprice
+            Cells(Row, 12).Value = percentchange
+            Cells(Row, 12).NumberFormat="0.00%"
+
+            end If
 
     Next Row
 
@@ -97,6 +106,7 @@ Cells(summary_row, 20).Value = Cells(2, 3).Value
 
     Cells(2, 17).Value = inc_ticker
     Cells(2, 18).Value = greatest_inc
+    Cells(2, 18).NumberFormat="0.00%"
 
     'GREATEST DECREASE
     greatest_dec = 0
@@ -123,6 +133,7 @@ Cells(summary_row, 20).Value = Cells(2, 3).Value
 
     Cells(3, 17).Value = dec_ticker
     Cells(3, 18).Value = greatest_dec
+    Cells(3, 18).NumberFormat="0.00%"
 
     'GREATEST VOLUME
     greatest_volume = 0
