@@ -33,7 +33,7 @@ total_counter = dict(zip(candidates,counter))
 percentage_summary = {k: v / total_votes for k,v in total_counter.items()}
 
 
-with open('PyPoll.txt', 'w') as f:
+with open('Test.txt', 'w') as f:
 
     f.write("Election Results \n")
     f.write("---------------------------- \n")
@@ -42,7 +42,7 @@ with open('PyPoll.txt', 'w') as f:
     f.write("---------------------------- \n")
     f.write("Canidates Receiving Votes: \n")
     for cand, pct in percentage_summary.items():
-        f.write (f"{cand}" + "\n")
+        f.write (f"{cand}") #+ "\n")
     f.write("---------------------------- \n")
     f.write("Total Number Votes per Candidate: \n")
     f.write((list(candidates))[0] + " : " + str(otooley_counter) + "\n")
@@ -51,8 +51,8 @@ with open('PyPoll.txt', 'w') as f:
     f.write((list(candidates))[3] + " : " + str(li_counter) + "\n")
     f.write("---------------------------- \n")
     f.write("Percentage of Votes per Candidate: \n")
-    for cand, pct in percentage_summary.items():
-        f.write (f"{cand} : {round(pct *100,2)}% \n")
+    # for cand, pct in percentage_summary.items():
+    #     f.write (f"{cand} : {round(pct *100,2)}% \n")
     f.write("---------------------------- \n")
     f.write("Winner of Election : " + (str(max(percentage_summary, key=percentage_summary.get)) + "\n"))
 
