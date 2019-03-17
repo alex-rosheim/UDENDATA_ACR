@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <table>
+        <tr>
+            <th>name</th>
+            <th>height</th>
+            <th>place</th>
+        </tr>
+        <tr>
+            <td>Kilimanjaro</td>
+            <td>5895</td>
+            <td>Tanzania</td>
+        </tr>
+    </table> -->
+    <input type="text" name="" id="MtnHeigh">
+    <div id="mountain">
+    </div>
+    <script>
+        // hook up our event listenter
+        let myInput = document.getElementById('MtnHeigh')
+        myInput.addEventListener('input', function(e) {
+            console.log(this.value)
+            renderMountainsTable(this.value)
+            // perhaps recall the render function here
+            // think about many tables existing too
+            // try to jury rig this and re-render your table
+        })
+        function renderMountainsTable(minMtnHeight) {
+            document.getElementById('mountain').innerHTML = '';
+            const MOUNTAINS = [
+                { name: "Kilimanjaro", height: 5895, place: "Tanzania" },
+                { name: "Everest", height: 8848, place: "Nepal" },
+                { name: "Mount Fuji", height: 3776, place: "Japan" },
+                { name: "Vaalserberg", height: 323, place: "Netherlands" },
+                { name: "Denali", height: 6168, place: "United States" },
+                { name: "Popocatepetl", height: 5465, place: "Mexico" },
+                { name: "Mont Blanc", height: 4808, place: "Italy/France" }
+            ].filter(x => {
+                return x.height > minMtnHeight;
+            })
+            let myTable = document.createElement('table');
+            let mtnDiv = document.getElementById('mountain')
+            mtnDiv.appendChild(myTable);
+            // What are my column headers?
+            let myCols = Object.keys(MOUNTAINS[0]);
+            let tr = document.createElement('tr');
+            myTable.appendChild(tr);
+            myCols.forEach(x => {
+                let th = document.createElement('th');
+                th.innerHTML = x;
+                tr.appendChild(th)
+            })
+            // ONly have mountains show up higher than 5000m
+            // go over each MOUNTAIN and add a tr, with several tds
+            MOUNTAINS.forEach(mount_object => {
+                let tr = document.createElement('tr');
+                myTable.appendChild(tr)
+                Object.values(mount_object).forEach(x => {
+                    let td = document.createElement('td');
+                    td.innerHTML = x;
+                    tr.appendChild(td)
+                })
+            })
+        }
+    </script>
+</body>
+</html>

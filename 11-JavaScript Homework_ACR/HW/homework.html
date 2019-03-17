@@ -1,0 +1,24 @@
+let tBody = d3.select('tbody');
+
+data.map(ufo_sighting)
+
+<!-- first 25 mins of 03/12 zoom video -->
+
+also look at filter example:
+
+var list = [
+    { date: '12/1/2012', reading: 3, id: 20055 },
+    { date: '13/1/2011', reading: 5, id: 20053 },
+    { date: '14/1/2011', reading: 6, id: 45652 },
+    { date: '14/1/2011', reading: 6, id: 45652 },
+    { date: '14/1/2012', reading: 6, id: 45652 }
+];
+
+// reading is 6 AND date is 2012
+let filtered = list.filter(x => {
+  return x.reading == 6;
+}).filter(x => {
+  return x.date.split('/')[2] == '2012'
+})
+
+console.log(filtered)
