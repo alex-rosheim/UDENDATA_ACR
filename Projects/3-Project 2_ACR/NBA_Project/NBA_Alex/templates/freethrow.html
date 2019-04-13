@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>NBA - Free Throws</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <link rel="stylesheet" href="/NBA_Alex/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">NBA Stats Visualizations</a>
+        <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+        <input class="form-control form-control-dark w-100" type="text" placeholder="FILTER DATE => 2019-04-01"
+            aria-label="Search" id='datefilter'>
+        <BR>
+        <button id=myButton>FILTER</button>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/NBA_Alex/templates/index.html">NBA Dashboard</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/index.html">
+                                <span data-feather="home"></span>
+                                NBA Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/fantasy_overall.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Fantasy Points (Overall)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/3pointers.html">
+                                <span data-feather="bar-chart-2"></span>
+                                3 Point Shots Made (3P)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/assists.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Assists (A)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/blocks.html">
+                                <span data-feather="file"></span>
+                                Blocks (B)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/fieldgoals.html">
+                                <span data-feather="shopping-cart"></span>
+                                Field Goal Made (FG)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/NBA_Alex/templates/freethrow.html">
+                                <span data-feather="users"></span>
+                                Free Throw Made (FT)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/rebounds.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Rebounds (R)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/steals.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Steals (S)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/turnovers.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Turnovers (T)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/top_performers.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Top Performers (By Date)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NBA_Alex/templates/conclusion.html">
+                                <span data-feather="bar-chart-2"></span>
+                                Conclusion ($)
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <br>
+                            <br>
+                            <!-- <br> -->
+                            <img src="/NBA_Alex/img/nbajam.png" alt="NBA" style="width:235px;height:125px">
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="/NBA_Alex/js/freethrow.js"></script>
+</body>
+
+</html>
